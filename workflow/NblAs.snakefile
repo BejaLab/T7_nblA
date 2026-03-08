@@ -243,17 +243,26 @@ rule splitstree_run:
     shell:
         "xvfb-run -a SplitsTreeCMD -x 'IMPORT FILE={input.fasta} DATATYPE=PROTEIN; EXECUTE FILE={input.nexus}; UPDATE; SAVE FILE={output}; QUIT;'"
 
-rule network_add_traits:
+rule copy_nexus:
     input:
-        nexus = "analysis/nbla/nbla_all_cdhit.nex",
-        data = "analysis/nbla/nblA_metadata.csv",
-        clstr = "analysis/nbla/nblA_all_cdhit.faa.clstr"
+        "analysis/nbla/nbla_all_cdhit.nex"
     output:
         "output/NblA_network.nex"
+    shell:
+        "cp {input} {output}"
+
+rule collect_metadata:
+    input:
+        data = "analysis/nbla/nblA_metadata.csv",
+        clstr = "analysis/nbla/nblA_all_cdhit.faa.clstr",
+        fasta = "analysis/nbla/nblA_all.faa",
+        aln = "analysis/nbla/nblA_all_cdhit.strip.faa"
+    output:
+        "output/NblA_network.xlsx"
     conda:
         "envs/python.yaml"
     script:
-        "scripts/nexus_add_traits.py"
+        "scripts/collect_metadata.py"
 
 rule plot_network:
     input:

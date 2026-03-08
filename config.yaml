@@ -1,0 +1,36 @@
+databases:
+  IMGVR: IMGVR_all_nucleotides_renamed.fna
+  GOV2: scaffolds.fasta
+nblA:
+  threshold: 20
+dRep:
+  length: 30000
+  identity: 0.95
+exonuclease:
+  length: 400
+  score: 115
+  identity: 40
+  min_downstream: 500
+  max_downstream: 1000
+  identity_for_assignment: 60
+recruitment:
+  padding: 100
+  clustering: 0.99
+phylophlan:
+  min_markers:
+    markers7: 7
+    markers9: 8
+  model: PROTCATLG
+phylogeny:
+  w_all:  8
+  h_all: 12
+  w_ref: 5.75
+  h_ref: 3.50
+  max_mrca_dist: 1
+colors:
+  A: [ '#33a02cff', '#b2df8aff' ]
+  B: [ '#0000ffff', '#96c3dcff' ]
+  C: [ '#d90017ff', '#f88587ff' ]
+  D: [ '#fc6908ff', '#fbb25cff' ]
+  E: [ '#d45e9eff', '#eca4d1ff' ]
+  F: [ '#562888ff', '#bea0ccff' ]

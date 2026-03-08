@@ -94,7 +94,7 @@ rule picocyano_build_hmm:
     output:
         "analysis/profile/nblA-picocyano.hmm"
     params:
-        profile = "nblA-cyanorak"
+        profile = "nblA-picocyano"
     conda:
         "envs/search.yaml"
     shell:
